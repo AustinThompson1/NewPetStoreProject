@@ -19,6 +19,8 @@ namespace NewPetStoreProject
 
         public List<string> GetOnlyInStockProducts();
 
-        public T GetProductByName<T>(string name) where T : Product;
+        //public T GetProductByName<T>(string name) where T : Product;
+
+        public Product GetProductById(Int32 ProductId);
     }
 }

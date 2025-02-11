@@ -21,33 +21,9 @@ namespace NewPetStoreProject
         /// <param name="product"></param>
         public void AddProduct(Product product)
         {
-            
+            //_productRepo.AddProduct;
 
-            //if (product is DogLeash)
-            //{
-            //    DogLeashValidator validator = new DogLeashValidator();
-            //    if (validator.Validate(product as DogLeash).IsValid)
-            //    {
-            //        _products.Add(product);
-            //        _dogLeash.Add(product.Name, product as DogLeash);
-            //    }
-            //    else
-            //    {
-            //        throw new ValidationException("DogLeash Is Not Valid!");
-            //    }
-
-
-            //}
-            //else if (product is CatFood)
-            //{
-            //    _products.Add(product);
-            //    _catFood.Add(product.Name, product as CatFood);
-
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Invalid Product, Product was not added.");
-            //}
+           
         }
 
         public List<Product> GetAllProducts()
@@ -57,20 +33,7 @@ namespace NewPetStoreProject
 
 
         }
-        
-
-        //public DogLeash GetDogLeashByName(string Name)
-        //{
-        //    try
-        //    {
-        //        return _dogLeash[Name];
-        //    }
-        //    catch (NullReferenceException)
-        //    {
-        //        Console.WriteLine("Invalid DogLeashName");
-        //        return null;
-        //    }
-        //}
+       
         public List<string> GetOnlyInStockProducts()
         {
             return _products
@@ -86,9 +49,9 @@ namespace NewPetStoreProject
                 .Select(x => x.Price)
                 .Sum();
         }
-        public Product GetProductById (Int32 ProductId)
+        public Product GetProductById (Int32 id)
         {
-            return _productRepo.GetProductById(ProductId);
+            return _productRepo.GetProductById(id);
         }
         //public T GetProductByName<T>(string name) where T : Product
         //{
