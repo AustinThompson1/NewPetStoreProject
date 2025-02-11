@@ -1,8 +1,5 @@
-﻿using System.ComponentModel;
-using System.Text.Json;
+﻿using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
 
 
 namespace NewPetStoreProject
@@ -16,12 +13,12 @@ namespace NewPetStoreProject
             var services = CreateServiceCollection();
             var productLogic = services.GetService<IProductLogic>();
 
-            productLogic.AddProduct(new DogLeash() { Name = "Cool Dog Leash", Price = 2.99m, Description = "Super Durable", Quantity = 1 });
-            productLogic.AddProduct(new DogLeash() { Name = "Dope Dog Leash", Price = 5.99m, Description = "It's Dope!", Quantity = 10 });
-            productLogic.AddProduct(new DogLeash() { Name = "Superb Dog Leash", Price = 0.99m, Description = "It's the best", Quantity = 5 });
+            //productLogic.AddProduct(new DogLeash() { Name = "Cool Dog Leash", Price = 2.99m, Description = "Super Durable", Quantity = 1 });
+            //productLogic.AddProduct(new DogLeash() { Name = "Dope Dog Leash", Price = 5.99m, Description = "It's Dope!", Quantity = 10 });
+            //productLogic.AddProduct(new DogLeash() { Name = "Superb Dog Leash", Price = 0.99m, Description = "It's the best", Quantity = 5 });
 
 
-            Console.WriteLine("Press 1 to add a product.\nPress 2 to view all products.\nPress 3 to view a DogLeash by name.\nPress 4 to view all in stock products.\nPress 5 to get total inventory price\nType 'exit' to quit.");
+            Console.WriteLine("Press 1 to add a product.\nPress 2 to view all products.\nPress 3 to view a DogLeash by name.\nPress 4 to view all in stock products.\nPress 5 to get total inventory price\nType 'exit' to quit.\nPress 6 to get Product by ID");
             string userInput = Console.ReadLine();
 
 
@@ -87,7 +84,7 @@ namespace NewPetStoreProject
                 {
                     Console.WriteLine("Enter the name of the Product you would like to view");
                     string productName = Console.ReadLine();
-                    Product product = productLogic.GetProductByName(productName);
+                    Product product = productLogic.GetProductByName<Product>(productName);
                     if (product != null)
                     {
                         Console.WriteLine(JsonSerializer.Serialize(product));
@@ -114,6 +111,11 @@ namespace NewPetStoreProject
 
                     Console.ReadLine();
                 }
+                else if (userInput.ToLower() == "6")
+                {
+
+                    Console.ReadLine();
+                }
 
                 Console.WriteLine("Press 1 to add a product.\nPress 2 to view all products.\nPress 3 to view a DogLeash by name.\nPress 4 to view all in stock products.\nPress 5 to get total inventory price.\nType 'exit' to quit.");
                 userInput = Console.ReadLine();
@@ -126,6 +128,7 @@ namespace NewPetStoreProject
         {
             return new ServiceCollection()
                 .AddTransient<IProductLogic,ProductLogic>()
+                .AddTransient<IProductRepository,ProductRepository>()
                 .BuildServiceProvider();
         }
     }

@@ -17,25 +17,6 @@ namespace NewPetStoreProject
                 .Where(x => x.Quantity > 0)
                 .ToList();
         }
-        public static T GetProductByName<T>(string name) where T : Product
-        {
-            try
-            {
-                if (typeof(T) == typeof(DogLeash))
-                {
-                    return _dogLeash[name] as T;
-                }
-                else if (typeof(T) == typeof(CatFood))
-                {
-                    return _catFood[name] as T;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch (Exception)
-            { return null; }
-        }
+       
     }
 }

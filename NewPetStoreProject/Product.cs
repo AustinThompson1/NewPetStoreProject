@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NewPetStoreProject
+﻿namespace NewPetStoreProject
 {
     public class Product
     {
@@ -12,7 +6,7 @@ namespace NewPetStoreProject
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public string Description { get; set; }
-        
+
 
     }
 }
