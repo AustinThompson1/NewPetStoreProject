@@ -11,8 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NewPetStoreProject\NewPetStoreProject.csproj" />
-    <ProjectReference Include="..\NewPetStoreProject\NewPetStoreProject\NewPetStoreProject.csproj" />
   </ItemGroup>
 
 </Project>
