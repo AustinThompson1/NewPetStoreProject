@@ -14,7 +14,7 @@ namespace PetStore.Data
         {
             _dbcontext = new ProductContext();
         }
-        public void AddProductToDb(Product product)
+        public void AddProduct(Product product)
         {
             _dbcontext.Products.Add(product);
             _dbcontext.SaveChanges();
@@ -23,10 +23,23 @@ namespace PetStore.Data
         {
             return _dbcontext.Products.SingleOrDefault(x => x.ProductId == productId);
         }
-        public List<Product> GetAllProducts() 
-        { 
+        public List<Product> GetAllProducts()
+        {
             return _dbcontext.Products.ToList();
         }
-
+        public List<string> GetOnlyInStockProducts()
+        {
+            return _dbcontext.Products
+                .Where(x => x.Quantity > 0)
+                .Select(x => x.Name)
+                .ToList();
+        }
+        public decimal GetTotalPriceOfInventory()
+        {
+            return _dbcontext.Products
+                .Where(x => x.Quantity > 0)
+                .Select(x => x.Price)
+                .Sum();
+        }
     }
 }

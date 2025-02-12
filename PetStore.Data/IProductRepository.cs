@@ -8,8 +8,10 @@ namespace PetStore.Data
 {
     public interface IProductRepository
     {
-        public void AddProductToDb(Product product);
+        public void AddProduct(Product product);
         public Product GetProductById(int productId);
         public List<Product> GetAllProducts();
+        public List<string> GetOnlyInStockProducts();
+        public decimal GetTotalPriceOfInventory();
     }
 }
