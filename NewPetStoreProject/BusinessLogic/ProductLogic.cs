@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using NewPetStoreProject;
 using PetStore.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace NewPetStoreProject
 {
@@ -21,59 +22,32 @@ namespace NewPetStoreProject
         /// <param name="product"></param>
         public void AddProduct(Product product)
         {
-            //_productRepo.AddProduct;
+            
+            
+                _productRepo.AddProduct(product);
 
-           
+
         }
 
         public List<Product> GetAllProducts()
         {
-
-            return _products;
-
-
+            return _productRepo.GetAllProducts();
         }
-       
+
         public List<string> GetOnlyInStockProducts()
         {
-            return _products
-                .Where(x => x.Quantity > 0)
-                .Select(x => x.Name)
-                .ToList();
+            return _productRepo.GetOnlyInStockProducts();
         }
 
         public decimal GetTotalPriceOfInventory()
         {
-            return _products
-                .InStock()
-                .Select(x => x.Price)
-                .Sum();
+            return _productRepo.GetTotalPriceOfInventory();
         }
         public Product GetProductById (Int32 id)
         {
             return _productRepo.GetProductById(id);
         }
-        //public T GetProductByName<T>(string name) where T : Product
-        //{
-        //    try
-        //    {
-        //        if (typeof(T) == typeof(DogLeash))
-        //        {
-        //            return _dogLeash[name] as T;
-        //        }
-        //        else if (typeof(T) == typeof(CatFood))
-        //        {
-        //            return _catFood[name] as T;
-        //        }
-        //        else
-        //        {
-                    
-        //            return  _products.Find(x => x.Name == name) as T;
-        //        }
-        //    }
-        //    catch (Exception)
-        //    { return null; }
-        //}
+       
     }
 }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NewPetStoreProject;
+using PetStore.Data;
 
 namespace NewPetStoreProject
 {
@@ -13,13 +14,9 @@ namespace NewPetStoreProject
 
         public List<Product> GetAllProducts();
 
-        //public DogLeash GetDogLeashByName(string Name);
-
         public decimal GetTotalPriceOfInventory();
 
         public List<string> GetOnlyInStockProducts();
-
-        //public T GetProductByName<T>(string name) where T : Product;
 
         public Product GetProductById(Int32 ProductId);
     }
