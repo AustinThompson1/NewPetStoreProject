@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using NewPetStoreProject;
+using NewPetStoreProject.Validators;
 using PetStore.Data;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,20 +13,15 @@ namespace NewPetStoreProject
         {
             _productRepo = ProductRepository;
         }
-        //private List<Product> _products = new List<Product>();
-
-        //public Dictionary<string, DogLeash> _dogLeash = new Dictionary<string, DogLeash>();
-        //public Dictionary<string, CatFood> _catFood = new Dictionary<string, CatFood>();
-        /// <summary>
-        /// Adds product to correct dictionary and list.
-        /// </summary>
-        /// <param name="product"></param>
+       
         public void AddProduct(Product product)
         {
-            
-            
-                _productRepo.AddProduct(product);
 
+            var validator = new AddProductValidator();
+            if (validator.Validate(product).IsValid)
+            {
+                _productRepo.AddProduct(product);
+            }
 
         }
 
