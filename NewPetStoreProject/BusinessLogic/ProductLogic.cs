@@ -9,11 +9,13 @@ namespace NewPetStoreProject
     public class ProductLogic : IProductLogic
     {
         private readonly IProductRepository _productRepo;
-        public ProductLogic(IProductRepository ProductRepository)
+        private readonly IOrderRepository _OrderRepo;
+        public ProductLogic(IProductRepository ProductRepository, IOrderRepository orderRepo)
         {
             _productRepo = ProductRepository;
+            _OrderRepo = orderRepo;
         }
-       
+
         public void AddProduct(Product product)
         {
 
@@ -39,11 +41,20 @@ namespace NewPetStoreProject
         {
             return _productRepo.GetTotalPriceOfInventory();
         }
-        public Product GetProductById (Int32 id)
+        public Product GetProductById(Int32 id)
         {
             return _productRepo.GetProductById(id);
         }
-       
+        public void AddOrder(Order order)
+        {
+            _OrderRepo.AddOrder(order);
+        }
+        public void GetOrder(int Id)
+        {
+            _OrderRepo.GetOrder(Id);
+        }
+
+
     }
 }
 

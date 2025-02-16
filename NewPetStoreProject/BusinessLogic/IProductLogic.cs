@@ -19,5 +19,7 @@ namespace NewPetStoreProject
         public List<string> GetOnlyInStockProducts();
 
         public Product GetProductById(Int32 ProductId);
+        public void AddOrder(Order order);
+        public void GetOrder(int Id);
     }
 }
