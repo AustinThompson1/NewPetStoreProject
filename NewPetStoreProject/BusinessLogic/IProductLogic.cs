@@ -20,6 +20,6 @@ namespace NewPetStoreProject
 
         public Product GetProductById(Int32 ProductId);
         public void AddOrder(Order order);
-        public void GetOrder(int Id);
+        public Order GetOrder(int Id);
     }
 }

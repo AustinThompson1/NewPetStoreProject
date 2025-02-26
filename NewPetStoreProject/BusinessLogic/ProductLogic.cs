@@ -49,9 +49,9 @@ namespace NewPetStoreProject
         {
             _OrderRepo.AddOrder(order);
         }
-        public void GetOrder(int Id)
+        public Order GetOrder(int Id)
         {
-            _OrderRepo.GetOrder(Id);
+            return _OrderRepo.GetOrder(Id);
         }
 
 
